@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  role_name: patch_rhel
+  author: Chad Ferman
+  description: Patch RHEL systems with pre/post checks and automated reboots
+  license: GPL-3.0-or-later
+  min_ansible_version: "2.14"
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+  galaxy_tags:
+    - linux
+    - rhel
+    - patching
+    - dnf
+    - security
+
+dependencies: []

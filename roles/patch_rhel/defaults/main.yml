@@ -1,0 +1,9 @@
+---
+# Minimum free space ratio on / (default 10%)
+patch_rhel_min_free_space_ratio: 0.1
+
+# Reboot timeout in seconds
+patch_rhel_reboot_timeout: 600
+
+# Reboot message
+patch_rhel_reboot_msg: "Rebooting initiated by Ansible Automation Platform"

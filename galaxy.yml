@@ -1,0 +1,26 @@
+---
+namespace: chadmf
+name: patching
+version: 1.0.0
+readme: README.md
+authors:
+  - Chad Ferman <cferman@example.com>
+description: Ansible collection for RHEL system patching with pre/post checks and automated reboots
+license:
+  - GPL-3.0-or-later
+license_file: ''
+tags:
+  - linux
+  - rhel
+  - patching
+  - dnf
+  - security
+dependencies: {}
+repository: https://github.com/chadmf/ansible-collection-patching
+documentation: https://github.com/chadmf/ansible-collection-patching
+homepage: https://github.com/chadmf/ansible-collection-patching
+issues: https://github.com/chadmf/ansible-collection-patching/issues
+build_ignore:
+  - .git
+  - .gitignore
+  - '*.tar.gz'

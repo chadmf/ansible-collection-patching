@@ -1,0 +1,49 @@
+---
+- name: PRE-CHECK - Ensure enough free space on /
+  ansible.builtin.assert:
+    that:
+      - item.mount == '/'
+      - (item.size_available / item.size_total) > 0.1
+    fail_msg: "Insufficient disk space on / for patching."
+  loop: "{{ ansible_mounts }}"
+  when: item.mount == '/'
+  tags:
+    - precheck
+
+- name: PATCHING - Update all packages to the latest version
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+    update_cache: true
+  register: dnf_update_result
+  tags:
+    - patching
+
+- name: CHECK - See if a reboot is required
+  ansible.builtin.command: /usr/bin/needs-restarting -r
+  register: reboot_required
+  failed_when: false
+  changed_when: false
+  tags:
+    - check
+
+- name: REBOOT - Restart system if kernel/glibc updated
+  ansible.builtin.reboot:
+    msg: "Rebooting initiated by Ansible Automation Platform"
+    reboot_timeout: 600
+  when: reboot_required.rc != 0
+  tags:
+    - reboot
+
+- name: POST-CHECK - Verify system uptime
+  ansible.builtin.command: uptime
+  register: system_uptime
+  changed_when: false
+  tags:
+    - postcheck
+
+- name: LOG - Display summary of updates
+  ansible.builtin.debug:
+    msg: "Update task completed. Packages changed: {{ dnf_update_result.changed }}"
+  tags:
+    - log
