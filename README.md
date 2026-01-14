@@ -33,7 +33,7 @@ ansible-galaxy collection install git+https://github.com/chadmf/ansible-collecti
   hosts: all
   become: true
   roles:
-    - chadmf.patching.patch_rhel
+    - patch_rhel
 ```
 
 Or use with tags to run specific tasks:
