@@ -3,4 +3,4 @@
   hosts: all
   become: true
   roles:
-    - chadmf.patching.patch_rhel
+    - patch_rhel
