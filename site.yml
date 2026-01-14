@@ -1,6 +1,0 @@
----
-- name: Patch RHEL systems
-  hosts: all
-  become: true
-  roles:
-    - patch_rhel
