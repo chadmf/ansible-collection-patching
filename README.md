@@ -16,26 +16,19 @@ Patches RHEL systems using DNF with the following features:
 
 ## Installation
 
-```bash
-ansible-galaxy collection install chadmf.patching
-```
-
-Or install from GitHub:
+Install from source by placing the collection in your local collections path:
 
 ```bash
-ansible-galaxy collection install git+https://github.com/chadmf/ansible-collection-patching.git
+git clone https://github.com/chadmf/ansible-collection-patching.git
+mkdir -p ~/.ansible/collections/ansible_collections/chadmf
+cp -R ansible-collection-patching ~/.ansible/collections/ansible_collections/chadmf/patching
 ```
 
 ### Import into Ansible Automation Platform (AAP)
 
-If you want to import this collection into AAP (Automation Hub) instead of installing from Galaxy:
+If you want to import this collection into AAP (Automation Hub) instead of installing locally:
 
-- Build the collection artifact:
-
-```bash
-ansible-galaxy collection build
-```
-
+- Build the collection artifact as a tarball.
 - In AAP, go to **Automation Hub** → **Collections** → **Import**.
 - Upload the generated tarball (e.g., `chadmf-patching-<version>.tar.gz`).
 
