@@ -3,4 +3,4 @@
   hosts: all
   become: true
   roles:
-    - patch_rhel
+    - role: ../roles/patch_rhel
